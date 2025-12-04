@@ -1,0 +1,136 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-brand h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.config-link {
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.config-link:hover {
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .navbar-content {
+    flex-wrap: wrap;
+  }
+  
+  .navbar-brand {
+    flex: 1 0 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar-links {
+    order: 3;
+    flex: 1 0 100%;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+  }
+  
+  .navbar-user {
+    order: 2;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 1rem 0;
+  }
+}

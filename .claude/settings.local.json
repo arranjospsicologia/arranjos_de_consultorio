@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm start)",
+      "Bash(timeout:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(ping:*)",
+      "Bash(npm run dev:all:*)",
+      "Bash(taskkill:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 11500 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Id 6500 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Id 11100 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Name node -Force\")",
+      "Bash(npm test:*)",
+      "Bash(powershell -Command \"Stop-Process -Id 27296 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Id 27620 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Id 19008 -Force\")",
+      "Bash(powershell -Command \"Get-Content db.json | Select-String -Pattern ''\"\"financeiro\"\"'',''\"\"despesas\"\"'',''\"\"outras_receitas\"\"'' -Context 0,5\")",
+      "Bash(powershell -Command \"(Get-Content db.json | ConvertFrom-Json).financeiro | Select-Object -First 5 | Format-List\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Administrador",
+      "email": "admin@arranjos.com",
+      "senha_hash": "$2a$10$8Z9Q3Z9Q3Z9Q3Z9Q3Z9Q3O",
+      "created_at": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Maria Silva",
+      "telefone": "(11) 98765-4321",
+      "email": "maria.silva@email.com",
+      "data_nascimento": "1985-03-15",
+      "data_inicio": "2025-01-10",
+      "status": "ativo",
+      "observacoes": "Cliente iniciou terapia para ansiedade. Demonstra boa evolução nas sessões.",
+      "created_at": "2025-01-10T10:00:00.000Z"
+    },
+    {
+      "nome": "João Santos",
+      "telefone": "(11) 91234-5678",
+      "email": "joao.santos@email.com",
+      "data_nascimento": "1990-07-22",
+      "data_inicio": "2025-01-15",
+      "status": "ativo",
+      "observacoes": "Terapia de casal. Atendimento quinzenal.",
+      "updated_at": "2025-12-03T17:34:07.181Z",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "nome": "Ana Costa",
+      "telefone": "(11) 99876-5432",
+      "email": "ana.costa@email.com",
+      "data_nascimento": "1992-11-08",
+      "data_inicio": "2024-12-01",
+      "status": "ativo",
+      "observacoes": "Tratamento para síndrome do pânico. Progresso significativo.",
+      "created_at": "2024-12-01T09:00:00.000Z"
+    },
+    {
+      "nome": "Bernardo",
+      "telefone": "",
+      "email": "",
+      "cpf": "",
+      "endereco": "",
+      "data_nascimento": "1990-12-09",
+      "aniversario": "",
+      "sexo": "não informado",
+      "tipo_cliente": "individual",
+      "servico_id": "",
+      "valor_acordado": "200",
+      "tipo_cobranca": "por_sessao",
+      "data_inicio": "2025-12-03",
+      "status": "ativo",
+      "observacoes": "",
+      "updated_at": "2025-12-04T11:28:04.673Z",
+      "id": 4
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "data": "2025-10-27",
+      "hora_inicio": "09:00",
+      "hora_fim": "10:00",
+      "tipo_sessao": "individual",
+      "status": "agendado",
+      "observacoes": "Sessão regular semanal",
+      "created_at": "2025-10-20T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "data": "2025-10-28",
+      "hora_inicio": "14:00",
+      "hora_fim": "15:00",
+      "tipo_sessao": "casal",
+      "status": "agendado",
+      "observacoes": "Terapia de casal - ambos presentes",
+      "created_at": "2025-10-20T14:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "cliente_id": 3,
+      "data": "2025-10-29",
+      "hora_inicio": "10:00",
+      "hora_fim": "11:00",
+      "tipo_sessao": "individual",
+      "status": "agendado",
+      "observacoes": "",
+      "created_at": "2025-10-20T15:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "cliente_id": 1,
+      "data": "2025-10-24",
+      "hora_inicio": "09:00",
+      "hora_fim": "10:00",
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "Cliente demonstrou boa evolução",
+      "created_at": "2025-10-17T10:00:00.000Z"
+    },
+    {
+      "cliente_id": 2,
+      "data": "2025-12-03",
+      "hora_inicio": "14:00",
+      "hora_fim": "15:00",
+      "tipo_sessao": "casal",
+      "status": "falta_justificada",
+      "observacoes": "Terapia de casal",
+      "updated_at": "2025-12-03T17:34:13.572Z",
+      "id": 6
+    },
+    {
+      "cliente_id": 3,
+      "data": "2025-12-04",
+      "hora_inicio": "10:00",
+      "hora_fim": "11:00",
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "updated_at": "2025-12-04T11:25:40.696Z",
+      "id": 7,
+      "status_presenca": "F"
+    },
+    {
+      "cliente_id": 4,
+      "data": "2025-12-05",
+      "hora_inicio": "15:00",
+      "hora_fim": "16:00",
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "Primeira sessão",
+      "updated_at": "2025-12-04T11:43:08.618Z",
+      "id": 8,
+      "status_presenca": "P"
+    },
+    {
+      "cliente_id": "4",
+      "data": "2025-12-03",
+      "hora_inicio": "09:00",
+      "hora_fim": "10:00",
+      "servico_id": "2",
+      "valor_sessao": 240,
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "updated_at": "2025-12-04T19:14:49.076Z",
+      "id": 10,
+      "pago": false,
+      "nota_fiscal_emitida": true,
+      "status_presenca": "P"
+    },
+    {
+      "cliente_id": "4",
+      "data": "2025-12-03",
+      "hora_inicio": "11:00",
+      "hora_fim": "10:00",
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "updated_at": "2025-12-04T18:56:59.152Z",
+      "id": 11,
+      "pago": true,
+      "nota_fiscal_emitida": true,
+      "status_presenca": "F"
+    },
+    {
+      "cliente_id": "1",
+      "data": "2025-12-02",
+      "hora_inicio": "08:30",
+      "hora_fim": "11:30",
+      "servico_id": "1",
+      "valor_sessao": 200,
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "updated_at": "2025-12-04T19:15:26.888Z",
+      "id": 13,
+      "status_presenca": "P",
+      "pago": false,
+      "nota_fiscal_emitida": true
+    },
+    {
+      "cliente_id": "3",
+      "data": "2025-12-04",
+      "hora_inicio": "08:30",
+      "hora_fim": "09:30",
+      "servico_id": "1",
+      "valor_sessao": 200,
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "created_at": "2025-12-04T11:29:28.226Z",
+      "id": 16,
+      "status_presenca": "F",
+      "updated_at": "2025-12-04T19:14:47.008Z",
+      "pago": false
+    },
+    {
+      "cliente_id": "4",
+      "data": "2025-12-06",
+      "hora_inicio": "08:30",
+      "hora_fim": "09:30",
+      "servico_id": "1",
+      "valor_sessao": 200,
+      "tipo_sessao": "individual",
+      "status": "realizado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "updated_at": "2025-12-04T18:57:00.486Z",
+      "id": 18,
+      "status_presenca": "P"
+    },
+    {
+      "cliente_id": "3",
+      "data": "2025-12-12",
+      "hora_inicio": "08:30",
+      "hora_fim": "09:30",
+      "servico_id": "1",
+      "valor_sessao": 200,
+      "tipo_sessao": "individual",
+      "status": "agendado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "created_at": "2025-12-04T11:40:47.108Z",
+      "id": 19
+    },
+    {
+      "cliente_id": "3",
+      "data": "2025-12-10",
+      "hora_inicio": "08:30",
+      "hora_fim": "09:30",
+      "servico_id": "1",
+      "valor_sessao": 200,
+      "tipo_sessao": "individual",
+      "status": "agendado",
+      "observacoes": "",
+      "frequencia": "unico",
+      "quantidade": 10,
+      "created_at": "2025-12-04T11:40:53.288Z",
+      "id": 20
+    }
+  ],
+  "financeiro": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "agendamento_id": 4,
+      "data": "2025-10-24",
+      "valor": 150,
+      "pago": true,
+      "forma_pagamento": "pix",
+      "observacoes": "Pagamento realizado via PIX",
+      "created_at": "2025-10-24T10:05:00.000Z"
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "agendamento_id": null,
+      "data": "2025-10-15",
+      "valor": 200,
+      "pago": true,
+      "forma_pagamento": "dinheiro",
+      "observacoes": "Sessão de casal",
+      "created_at": "2025-10-15T15:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "cliente_id": 3,
+      "agendamento_id": null,
+      "data": "2025-10-22",
+      "valor": 150,
+      "pago": false,
+      "forma_pagamento": "a_definir",
+      "observacoes": "Aguardando pagamento",
+      "created_at": "2025-10-22T11:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "cliente_id": 1,
+      "agendamento_id": null,
+      "data": "2025-09-05",
+      "valor": 150,
+      "pago": true,
+      "forma_pagamento": "pix",
+      "observacoes": "Sessão de setembro",
+      "created_at": "2025-09-05T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "cliente_id": 2,
+      "agendamento_id": null,
+      "data": "2025-09-12",
+      "valor": 200,
+      "pago": true,
+      "forma_pagamento": "cartao",
+      "observacoes": "Terapia de casal - setembro",
+      "created_at": "2025-09-12T14:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "cliente_id": 3,
+      "agendamento_id": null,
+      "data": "2025-09-20",
+      "valor": 150,
+      "pago": true,
+      "forma_pagamento": "dinheiro",
+      "observacoes": "Sessão individual - setembro",
+      "created_at": "2025-09-20T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "cliente_id": 1,
+      "agendamento_id": 5,
+      "data": "2025-12-02",
+      "valor": 150,
+      "pago": true,
+      "forma_pagamento": "pix",
+      "observacoes": "Sessão realizada",
+      "created_at": "2025-12-02T10:05:00.000Z"
+    }
+  ],
+  "evolucoes": [
+    {
+      "id": 1,
+      "cliente_id": 1,
+      "agendamento_id": 4,
+      "data": "2025-10-24",
+      "descricao": "Paciente relatou melhora significativa nos sintomas de ansiedade. Está praticando técnicas de respiração diariamente. Sono melhorou consideravelmente.",
+      "created_at": "2025-10-24T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "cliente_id": 2,
+      "agendamento_id": null,
+      "data": "2025-10-15",
+      "descricao": "Casal demonstrou melhor comunicação. Aplicadas técnicas de escuta ativa. Combinado prática de exercícios em casa.",
+      "created_at": "2025-10-15T15:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "cliente_id": 3,
+      "agendamento_id": null,
+      "data": "2025-10-22",
+      "descricao": "Progressos na exposição gradual. Paciente conseguiu usar transporte público sem crise de pânico. Muito positivo.",
+      "created_at": "2025-10-22T11:30:00.000Z"
+    }
+  ],
+  "configuracoes_usuario": [],
+  "servicos": [
+    {
+      "id": 1,
+      "usuario_id": 1,
+      "nome": "Atendimento Individual",
+      "duracao_minutos": 60,
+      "valor_padrao": 200,
+      "ativo": true,
+      "ordem": 1,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "usuario_id": 1,
+      "nome": "Atendimento de Casal",
+      "duracao_minutos": 75,
+      "valor_padrao": 240,
+      "ativo": true,
+      "ordem": 2,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    }
+  ],
+  "meios_pagamento": [
+    {
+      "id": 1,
+      "usuario_id": 1,
+      "nome": "Dinheiro",
+      "taxa_percentual": 0,
+      "ativo": true,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "usuario_id": 1,
+      "nome": "Pix",
+      "taxa_percentual": 0,
+      "ativo": true,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "usuario_id": 1,
+      "nome": "Transferência",
+      "taxa_percentual": 0,
+      "ativo": true,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "usuario_id": 1,
+      "nome": "Crédito",
+      "taxa_percentual": 4.5,
+      "ativo": true,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "usuario_id": 1,
+      "nome": "Picpay",
+      "taxa_percentual": 3.99,
+      "ativo": true,
+      "created_at": "2025-12-03T00:00:00.000Z",
+      "updated_at": "2025-12-03T00:00:00.000Z"
+    }
+  ],
+  "historico_taxas": [],
+  "clientes_membros": [],
+  "historico_valores_cliente": [],
+  "despesas": [],
+  "outras_receitas": [
+    {
+      "data": "2025-12-04",
+      "valor": 0.14,
+      "descricao": "Palestra",
+      "meio_pagamento_id": null,
+      "valor_taxa": 0,
+      "valor_liquido": 0.14,
+      "created_at": "2025-12-04T18:56:40.987Z",
+      "id": 1
+    }
+  ]
+}

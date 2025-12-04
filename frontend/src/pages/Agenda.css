@@ -1,0 +1,703 @@
+/* Agenda específico */
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.agenda-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.periodo-atual {
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+  text-transform: capitalize;
+}
+
+/* Agenda Calendar - Estilo Google Calendar */
+.agenda-calendar {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.agenda-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.agenda-header {
+  display: grid;
+  grid-template-columns: 80px repeat(auto-fit, minmax(100px, 1fr));
+  border-bottom: 2px solid var(--border);
+  background: var(--bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.horario-coluna {
+  width: 80px;
+  min-width: 80px;
+}
+
+.dia-coluna {
+  text-align: center;
+  padding: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+.dia-nome {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.dia-numero {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.agenda-body {
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.agenda-linha {
+  display: grid;
+  grid-template-columns: 80px repeat(auto-fit, minmax(100px, 1fr));
+  border-bottom: 1px solid var(--border);
+  min-height: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.horario-celula {
+  width: 80px;
+  min-width: 80px;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-right: 2px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1;
+}
+
+.dia-celula {
+  border-left: 1px solid var(--border);
+  position: relative;
+  min-height: 60px;
+  height: 60px;
+  transition: background 0.15s;
+  overflow: visible;
+}
+
+.dia-celula.vazio {
+  cursor: pointer;
+}
+
+.dia-celula.vazio:hover {
+  background: rgba(75, 0, 130, 0.05);
+}
+
+.dia-celula.ocupado {
+  cursor: default;
+}
+
+/* Blocos de agendamento */
+.agendamento-bloco {
+  position: absolute;
+  top: 2px;
+  background: var(--primary);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: visible;
+  z-index: 10;
+  box-sizing: border-box;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.agendamento-bloco:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
+.agendamento-bloco.status-agendado {
+  background: var(--primary);
+}
+
+.agendamento-bloco.status-presente {
+  background: var(--secondary);
+}
+
+.agendamento-bloco.status-cancelado {
+  background: var(--warning);
+  color: #333;
+}
+
+.agendamento-bloco.status-falta_justificada {
+  background: #17a2b8;
+}
+
+.agendamento-bloco.status-falta_cobrada {
+  background: var(--danger);
+}
+
+.agendamento-bloco.status-cancelado_terapeuta {
+  background: #6c757d;
+}
+
+.agendamento-bloco.status-cancelado_feriado {
+  background: #95a5a6;
+  color: #333;
+}
+
+.agendamento-tempo {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  opacity: 0.95;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 40px;
+}
+
+.agendamento-titulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  padding-right: 40px;
+  line-height: 1.3;
+}
+
+.agendamento-status {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+/* Ajustes para blocos estreitos (quando há múltiplos agendamentos) */
+.agendamento-bloco[style*="width: 50%"] .agendamento-titulo,
+.agendamento-bloco[style*="width: 33."] .agendamento-titulo {
+  font-size: 0.75rem;
+  -webkit-line-clamp: 1;
+}
+
+.agendamento-bloco[style*="width: 33."] .agendamento-tempo {
+  font-size: 0.6875rem;
+}
+
+.agendamento-bloco[style*="width: 33."] .agendamento-status {
+  display: none;
+}
+
+/* Tabelas */
+.table-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border);
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.table tr:hover {
+  background: var(--bg-secondary);
+}
+
+/* Top clientes */
+.top-clientes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.top-cliente-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 0.5rem;
+}
+
+.top-numero {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.top-nome {
+  flex: 1;
+  font-weight: 500;
+}
+
+/* Responsividade para Agenda */
+@media (max-width: 1200px) {
+  .agenda-header {
+    grid-template-columns: 60px repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .agenda-linha {
+    grid-template-columns: 60px repeat(auto-fit, minmax(80px, 1fr));
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .horario-coluna,
+  .horario-celula {
+    width: 60px;
+    min-width: 60px;
+  }
+
+  .dia-coluna {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .dia-celula {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .agendamento-titulo {
+    font-size: 0.75rem;
+  }
+
+  .agendamento-tempo {
+    font-size: 0.6875rem;
+  }
+
+  .agendamento-bloco {
+    padding: 0.375rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .page-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .agenda-navigation {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .agenda-navigation button {
+    width: 100%;
+  }
+
+  .periodo-atual {
+    font-size: 0.875rem;
+  }
+
+  .agenda-header {
+    grid-template-columns: 50px repeat(auto-fit, minmax(60px, 1fr));
+  }
+
+  .agenda-linha {
+    grid-template-columns: 50px repeat(auto-fit, minmax(60px, 1fr));
+    height: 45px;
+    min-height: 45px;
+  }
+
+  .horario-coluna,
+  .horario-celula {
+    width: 50px;
+    min-width: 50px;
+    font-size: 0.6875rem;
+    padding: 0.25rem;
+  }
+
+  .dia-coluna {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .dia-celula {
+    height: 45px;
+    min-height: 45px;
+  }
+
+  .dia-nome {
+    font-size: 0.625rem;
+  }
+
+  .dia-numero {
+    font-size: 0.75rem;
+  }
+
+  .agendamento-bloco {
+    padding: 0.25rem;
+  }
+
+  .agendamento-titulo {
+    font-size: 0.6875rem;
+    -webkit-line-clamp: 1;
+  }
+
+  .agendamento-tempo {
+    font-size: 0.625rem;
+  }
+
+  .agendamento-status {
+    display: none;
+  }
+
+  .table-container {
+    font-size: 0.8125rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+  }
+}
+
+/* Modo dia - células mais largas */
+@media (min-width: 769px) {
+  .agenda-table[data-modo="dia"] .agenda-header {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .agenda-table[data-modo="dia"] .agenda-linha {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+/* Novos estilos para Fase 4 */
+
+/* Status de presença - cores */
+.agendamento-bloco.status-P {
+  background: #28a745; /* Verde - Presente */
+}
+
+.agendamento-bloco.status-F {
+  background: #17a2b8; /* Azul claro - Falta Justificada */
+}
+
+.agendamento-bloco.status-FC {
+  background: #dc3545; /* Vermelho - Falta Cobrada */
+}
+
+.agendamento-bloco.status-D {
+  background: #ffc107; /* Amarelo - Data Comemorativa */
+  color: #333;
+}
+
+.agendamento-bloco.status-T {
+  background: #6c757d; /* Cinza - Cancelado Terapeuta */
+}
+
+.agendamento-bloco.status-R {
+  background: #fd7e14; /* Laranja - Reagendado */
+}
+
+/* Agendamento content e actions */
+.agendamento-content {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* Nova estrutura de actions com botões redondos */
+.agendamento-actions-new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Botões de status na vertical - canto superior direito */
+.status-buttons-vertical {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: all;
+  z-index: 15;
+}
+
+/* Botões redondos de status */
+.status-btn-round {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.status-btn-round:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.status-btn-round.active {
+  background: white;
+  color: #4b0082;
+  border: none;
+  font-weight: 900;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  text-shadow: none;
+}
+
+/* Select dropdown redondo */
+.status-select-round {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  text-align: center;
+  text-align-last: center;
+  padding: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+}
+
+.status-select-round:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.status-select-round option {
+  background: #4b0082;
+  color: white;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+/* Botão de pagamento - canto inferior esquerdo */
+.payment-btn-round {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  pointer-events: all;
+  z-index: 15;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+
+.payment-btn-round.unpaid {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.payment-btn-round.unpaid:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: scale(1.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.payment-btn-round.paid {
+  background: #28a745;
+  color: white;
+  border: none;
+  animation: pulse 2s infinite;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.payment-btn-round.paid:hover {
+  background: #218838;
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.6);
+  }
+}
+
+/* Form section styles */
+.form-section {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.form-section h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.form-section small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Ajustes para blocos menores */
+.agendamento-bloco[style*="height: 60px"] .agendamento-actions-new {
+  display: none;
+}
+
+.agendamento-bloco[style*="height: 90px"] .status-buttons-vertical {
+  gap: 2px;
+}
+
+.agendamento-bloco[style*="height: 90px"] .status-btn-round,
+.agendamento-bloco[style*="height: 90px"] .status-select-round {
+  width: 22px;
+  height: 22px;
+  font-size: 0.625rem;
+}
+
+.agendamento-bloco[style*="height: 90px"] .payment-btn-round {
+  width: 24px;
+  height: 24px;
+  font-size: 0.875rem;
+}
+
+/* Ajustes para blocos de altura média */
+.agendamento-bloco[style*="height: 120px"] .status-btn-round,
+.agendamento-bloco[style*="height: 120px"] .status-select-round {
+  width: 24px;
+  height: 24px;
+  font-size: 0.625rem;
+}
+
+.agendamento-bloco[style*="height: 120px"] .payment-btn-round {
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+}
+
+/* Responsividade para botões de ação */
+@media (max-width: 768px) {
+  .status-btn-round,
+  .status-select-round {
+    width: 24px;
+    height: 24px;
+    font-size: 0.625rem;
+  }
+
+  .payment-btn-round {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .status-buttons-vertical {
+    gap: 3px;
+  }
+}
